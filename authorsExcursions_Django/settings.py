@@ -40,7 +40,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-)!ln#0oau#n!fq8&edk2%w(esn8eu%5)()74eh1j@r(k0#rrq0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authorsExcursions_Django'
+    'authorsExcursions'
 ]
 
 MIDDLEWARE = [
@@ -91,16 +91,16 @@ WSGI_APPLICATION = 'authorsExcursions_Django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'authorsexcursoindb',
-        'USER': 'root',
-        'PASSWORD': '1311',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'authorsexcursoindb',
+#         'USER': 'root',
+#         'PASSWORD': '1311',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
