@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробная информация об экскурсии</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+<h1>Экскурсия №{{ tour.excID }}</h1>
+<table class="tour-info">
+    <tr>
+        <th>Номер экскурсии</th>
+        <td>{{tour.excID}}</td>
+    </tr>
+    <tr>
+        <th>Название экскурсии</th>
+        <td>{{tour.excName}}</td>
+    </tr>
+    <tr>
+        <th>Страна</th>
+        <td>{{tour.excCountry}}</td>
+    </tr>
+    <tr>
+        <th>Город</th>
+        <td>{{tour.excCity}}</td>
+    </tr>
+    <tr>
+        <th>Дата</th>
+        <td>{{tour.excDate}}</td>
+    </tr>
+    <tr>
+        <th>Количество людей</th>
+        <td>{{tour.peopleNumberCurrent}}</td>
+    </tr>
+    <tr>
+        <th>Ограничение по возрасту</th>
+        <td>{{tour.ageRestrict}}</td>
+    </tr>
+    <tr>
+        <th>Сложность маршрута</th>
+        <td>{{tour.pathDiff}}</td>
+    </tr>
+        <tr>
+        <th>Описание</th>
+        <td>{{tour.excDesc}}</td>
+    </tr>
+        <tr>
+        <th>Стоимость</th>
+        <td>{{tour.excPrice}}</td>
+    </tr>
+        <tr>
+        <th>Оценка</th>
+        <td>{{tour.excScore}}</td>
+    </tr>
+        <tr>
+        <th>Статус</th>
+        <td>{{tour.excStatus}}</td>
+</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<h1>Список всех пользователей:</h1>
+<table>
+    <tr>
+        <th>Id пользователя</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+    </tr>
+    {% for user in list_of_all_users %}
+    <tr>
+        <td>{{user.user_id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
