@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from authorsExcursions.models import User, RegisteredUser, Guide, Administrator, Tour, Cart, CartItem, Order
+from authorsExcursions.models import User, RegisteredUser, Guide, Administrator, Tour, Cart, CartItem, Order, Catalog
 
 # Register your models here.
 
@@ -12,5 +12,7 @@ admin.site.register(Tour)
 admin.site.register(Cart)
 admin.site.register(CartItem)
 admin.site.register(Order)
+admin.site.register(Catalog)
+
 
 # каталог, фидбек
