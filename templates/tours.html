@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+<form action="{% url 'search' %}" method="GET">
+    <input name="q" type="text" placeholder="Город...">
+</form>
+</form>
 <h1>Список всех экскурсий:</h1>
 <table>
     <tr>

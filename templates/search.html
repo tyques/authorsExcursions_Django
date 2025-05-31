@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск экскурсий'</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<h1>Список заказов для:</h1>
+<h2>{{ list_of_all_tours.0.customer }}</h2>
+<table>
+    <tr>
+        <th>Название экскурсии</th>
+        <th>Город</th>
+        <th>Дата экскурсии</th>
+    </tr>
+    {% for tour in list_of_all_tours %}
+    <tr>
+        <td>
+            <a href="{% url 'tour_detail' tour.excID %}">
+                {{ tour.excName }}</a>
+        </td>
+        <td>{{ tour.excCity }}</td>
+        <td>{{ tour.excDate }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
