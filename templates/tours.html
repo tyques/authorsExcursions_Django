@@ -10,33 +10,29 @@
 <form action="{% url 'search' %}" method="GET">
     <input name="q" type="text" placeholder="Город...">
 </form>
-</form>
 <h1>Список всех экскурсий:</h1>
 <table>
     <tr>
-        <th>Id экскурсии</th>
         <th>Название экскурсии</th>
-        <th>Страна</th>
         <th>Город</th>
-        <th>Дата</th>
-        <th>Количество людей</th>
-        <th>Ограничение по возрасту</th>
-        <th>Описание</th>
         <th>Цена</th>
-        <th>Оценка</th>
+        <th>В корзину</th>
     </tr>
     {% for tour in list_of_all_tours %}
     <tr>
-        <td>{{tour.excID}}</td>
-        <td>{{tour.excName}}</td>
-        <td>{{tour.excCountry}}</td>
+        <td>
+            <a href="{% url 'tour_detail' tour.excID %}">{{ tour.excName }}</a>
+        </td>
         <td>{{tour.excCity}}</td>
-        <td>{{tour.excDate}}</td>
-        <td>{{tour.peopleNumberCurrent}}</td>
-        <td>{{tour.ageRestrict}}</td>
-        <td>{{tour.excDesc}}</td>
         <td>{{tour.excPrice}}</td>
-        <td>{{tour.excScore}}</td>
+        <td>
+            <form action="{% url 'cart:cart_add' tour.excID %}" method="post">
+                {% csrf_token %}
+                {{ form.quantity.label_tag }}
+                {{ form.quantity }}
+                <input type="submit" value="Добавить">
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>

@@ -1,14 +1,14 @@
 from django.views.generic import TemplateView, ListView, DetailView
-
-from authorsExcursions.models import User, Tour
+from authorsExcursions.models import Profile, Tour
 from django.db.models import Q
+from cart.forms import CartAddProductForm
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
 class UsersListView(ListView):
     template_name = 'users.html'
-    model = User
+    model = Profile
     context_object_name = 'list_of_all_users'
 
 class TourListView(ListView):
@@ -16,12 +16,21 @@ class TourListView(ListView):
     model = Tour
     context_object_name = 'list_of_all_tours'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CartAddProductForm()
+        return context
+
 class TourDetailView(DetailView):
     template_name = 'tour_detail.html'
     model = Tour
     context_object_name = 'tour'
 
-# Lab 11
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CartAddProductForm()
+        return context
+
 class SearchView(ListView):
     template_name = 'search.html'
     model = Tour
@@ -29,5 +38,5 @@ class SearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         return Tour.objects.filter(
-            Q(excCity__icontains=query) 
+            Q(excCity__icontains=query)
         ).order_by('excDate').reverse()

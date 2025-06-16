@@ -58,5 +58,17 @@
         <th>Статус</th>
         <td>{{tour.excStatus}}</td>
 </table>
+
+<!-- Форма для добавления в корзину -->
+<div style="margin-top: 20px;">
+    <h2>Добавить в корзину:</h2>
+    <form action="{% url 'cart:cart_add' tour.excID %}" method="post">
+        {% csrf_token %}
+        {{ form.quantity.label_tag }}
+        {{ form.quantity }}
+        <button type="submit">Добавить в корзину</button>
+    </form>
+</div>
+
 </body>
 </html>

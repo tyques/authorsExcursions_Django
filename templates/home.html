@@ -15,7 +15,19 @@
 <p>Вы не вошли на сайт</p>
 <a href="{% url 'login' %}">Войти</a>
 {% endif %}
-<img src="{% static 'img/smartphone.jpg' %}" alt="smartphone">
+{# Старая ссылка: <a href="{% url 'cart:cart_detail' %}">корзина</a> #}<a href="{% url 'cart:cart_detail' %}">корзина</a>
+{# Новый блок для корзины #}
+<div class="cart">
+    {% with total_items=cart|length %}
+        {% if cart|length > 0 %}
+            Ваша корзина:
+            <a href="{% url 'cart:cart_detail' %}">
+                {{ total_items }} товар(-а/ов), {{ cart.get_total_price }} руб.
+            </a>
+        {% else %}
+            Корзина пуста.
+        {% endif %}
+    {% endwith %}
+</div>
 </body>
-<script src="{% static 'js/script.js' %}"></script>
 </html>
