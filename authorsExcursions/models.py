@@ -1,56 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-# class User(models.Model):
-#     user_id = models.AutoField(primary_key=True)
-#     username = models.CharField(max_length=150, unique=True)
-#     email = models.EmailField(unique=True)
-#     first_name = models.CharField(max_length=30, blank=True)
-#     last_name = models.CharField(max_length=150, blank=True)
-#     password = models.CharField(max_length=128)
-#     is_active = models.BooleanField(default=True)
-#     is_staff = models.BooleanField(default=False)
-#     date_joined = models.DateTimeField(auto_now_add=True)
-#
-#     def __str__(self):
-#         return self.username
-#
-#     class Meta:
-#         verbose_name = 'User'
-#         verbose_name_plural = 'Users'
-#
-# class RegisteredUser(User):
-#     def view_personal_account(self):
-#         pass
-#
-#     def edit_profile(self):
-#         pass
-#
-#     def view_visited_tours(self):
-#         from .models import Tour
-#         return Tour.objects.filter(participants=self)
-#
-#     class Meta:
-#         verbose_name = 'Registered User'
-#         verbose_name_plural = 'Registered Users'
-#
-# class Guide(RegisteredUser):
-#     def add_tour(self, tour_data):
-#         from .models import Tour
-#         return Tour.objects.create(guide=self, **tour_data)
-#
-#     class Meta:
-#         verbose_name = 'Guide'
-#         verbose_name_plural = 'Guides'
-#
-# class Administrator(RegisteredUser):
-#     def manage_catalog(self):
-#         pass
-#
-#     class Meta:
-#         verbose_name = 'Administrator'
-#         verbose_name_plural = 'Administrators'
-
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -151,24 +101,3 @@ class CartItem(models.Model):
     def get_total_price(self):
         return self.tour.excPrice * self.quantity
 
-
-class Order(models.Model):
-    orderId = models.AutoField(primary_key=True)
-    customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    tours = models.ManyToManyField(Tour)
-    cost = models.FloatField()
-    promocode = models.CharField(max_length=20, blank=True, null=True)
-    date = models.DateTimeField(auto_now_add=True)
-    PAYMENT_METHODS = [
-        ('CC', 'Credit Card'),
-        ('PP', 'PayPal'),
-        ('BT', 'Bank Transfer'),
-    ]
-    paymentMethod = models.CharField(max_length=2, choices=PAYMENT_METHODS, blank=True)
-
-    def __str__(self):
-        return f"Order #{self.orderId} by {self.customer.username}"
-
-    class Meta:
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'

@@ -57,7 +57,11 @@
     <p style="margin-top: 20px;">
         <a href="{% url 'tours' %}">Продолжить покупки</a>
     </p>
-
+    <p style="text-align: right; margin-top: 20px;">
+        <a href="{% url 'orders:order_create' %}" class="button-light" style="color: #FFF; background-color: #007bff; padding: 10px 15px; text-decoration: none;">
+            Оформить заказ
+        </a>
+    </p>
 {% endblock %}
 </body>
 </html>
